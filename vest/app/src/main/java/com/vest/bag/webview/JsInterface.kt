@@ -8,7 +8,6 @@ import com.vest.bag.utils.showToast
  * @Author: xx
  * @Date: 2021/9/21 15:08
  * @Desc:
- * @Github：https://github.com/leavesCZY
  */
 class JsInterface {
 

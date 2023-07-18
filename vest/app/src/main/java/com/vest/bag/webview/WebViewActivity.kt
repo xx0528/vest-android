@@ -18,7 +18,6 @@ import com.vest.bag.utils.showToast
  * @Author: xx
  * @Date: 2021/10/1 23:08
  * @Desc:
- * @Github：https://github.com/leavesCZY
  */
 class WebViewActivity : AppCompatActivity() {
 
