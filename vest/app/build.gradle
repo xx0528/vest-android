@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'android-junk-code'
 }
 
 android {
@@ -30,6 +31,24 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    androidJunkCode {
+        variantConfig {
+            release {
+                //注意：这里的release是变体名称，如果没有设置productFlavors就是buildType名称，如果有设置productFlavors就是flavor+buildType，例如（freeRelease、proRelease）
+                packageBase = 'com.audit.pass.app' //生成java类根包名
+                packageCount = 25 //生成包数量
+                activityCountPerPackage = 4 //每个包下生成Activity类数量
+                excludeActivityJavaFile = false
+                //是否排除生成Activity的Java文件,默认false(layout和写入AndroidManifest.xml还会执行)，主要用于处理类似神策全埋点编译过慢问题
+                otherCountPerPackage = 25  //每个包下生成其它类的数量
+                methodCountPerClass = 15  //每个类下生成方法数量
+                resPrefix = "zeiwe_"  //生成的layout、drawable、string等资源名前缀
+                drawableCount = 150  //生成drawable资源数量
+                stringCount = 150  //生成string数量
+            }
+        }
+    }
 }
 
 dependencies {
@@ -37,4 +56,11 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
+
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
+
+    implementation 'com.appsflyer:af-android-sdk:6.9.0'
+    implementation "com.android.installreferrer:installreferrer:2.2"
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+
 }
