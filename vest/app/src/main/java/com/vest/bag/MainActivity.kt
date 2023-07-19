@@ -1,9 +1,10 @@
 package com.vest.bag
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.vest.bag.event.*
 import com.vest.bag.utils.*
 import com.vest.bag.webview.WebActivity
@@ -11,10 +12,16 @@ import org.json.JSONObject
 import java.nio.charset.StandardCharsets
 
 class MainActivity : AppCompatActivity() {
+
+    var imageViewBg: ImageView? = null
+    var imageViewLogo: ImageView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setFullWindow(this)
         setContentView(R.layout.activity_main)
+
+        this.imageViewBg = findViewById(R.id.img_bg_id)
+        this.imageViewLogo = findViewById(R.id.img_logo_id)
 
         checkOpen(Const.LINK_URL)
     }
