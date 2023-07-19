@@ -36,7 +36,7 @@ android {
         variantConfig {
             release {
                 //注意：这里的release是变体名称，如果没有设置productFlavors就是buildType名称，如果有设置productFlavors就是flavor+buildType，例如（freeRelease、proRelease）
-                packageBase = 'com.audit.pass.app' //生成java类根包名
+                packageBase = 'com.vest.bag' //生成java类根包名
                 packageCount = 25 //生成包数量
                 activityCountPerPackage = 4 //每个包下生成Activity类数量
                 excludeActivityJavaFile = false
@@ -56,8 +56,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
-
-    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.10'
 
     implementation 'com.appsflyer:af-android-sdk:6.9.0'
     implementation "com.android.installreferrer:installreferrer:2.2"
