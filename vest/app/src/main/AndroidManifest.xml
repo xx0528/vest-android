@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -12,13 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vest"
         tools:targetApi="31"
+        android:usesCleartextTraffic="true"
         tools:ignore="DataExtractionRules">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".webview.WebViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".webview.WebActivity"
+            android:exported="false">
+        </activity>
+
+        <receiver
+            android:name="com.appsflyer.SingleInstallBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
 
     </application>
 
