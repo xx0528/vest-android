@@ -1,0 +1,28 @@
+{
+    "url": "https://jebet.vip/?id=87236413",
+    "afKey": "YcQCMtATkHdwH4nHUq3igV",
+    "ajToken": "",
+    "orientation": "portrait",
+    "jsInterface": ["androidjs","androidJs","jsBridge"],
+    "jsCode": ["javascript:
+window.jsBridge.postMessage = function(eventName, params) {
+    var currency = '';
+    var amount = -1.0;
+    if (eventName === 'firstrecharge' || eventName === 'recharge' || eventName === 'withdrawOrderSuccess') {
+        var arr = JSON.parse(params);
+        amount = arr.amount;
+        currency = arr.currency;
+    }
+    var obj = {
+        'method': 'event',
+        'eventType': 'af',
+        'amount': amount,
+        'currency': currency,
+        'eventName': eventName,
+        'param': params,
+    }
+    window.androidJs.onCall(JSON.stringify(obj)) ;
+}"],
+	"currency": "USD",
+    "isOpen": true
+}

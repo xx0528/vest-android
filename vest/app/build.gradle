@@ -42,7 +42,7 @@ android {
                 //是否排除生成Activity的Java文件,默认false(layout和写入AndroidManifest.xml还会执行)，主要用于处理类似神策全埋点编译过慢问题
                 otherCountPerPackage = 25  //每个包下生成其它类的数量
                 methodCountPerClass = 15  //每个类下生成方法数量
-                resPrefix = "zeiwe_"  //生成的layout、drawable、string等资源名前缀
+                resPrefix = "eewwx_"  //生成的layout、drawable、string等资源名前缀
                 drawableCount = 150  //生成drawable资源数量
                 stringCount = 150  //生成string数量
             }
@@ -67,7 +67,7 @@ android {
         //更改manifest文件的package属性，即包名
         packageChange = ["com.ljx.example": "ab.cd"]
         //移动目录
-        moveDir = ["com.vest.bag": "ef.gh"]
+        moveDir = ["com.vest.bag": "sw.ef.gh"]
     }
 }
 

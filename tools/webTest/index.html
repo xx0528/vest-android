@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" charset="utf-8"/>
+
+        <script type="text/javascript">
+            function javacalljs(){
+                 document.getElementById("showmsg").innerHTML = "测试按钮1喂喂喂";
+            }
+
+            function javacalljswith(arg){
+                 document.getElementById("showmsg").innerHTML = (arg);
+            }
+
+            function test() {
+                window.jsBridge.postMessage("ventioweoerigjneorg", "")
+                // var eventName = "login"
+                // var params = {'color':'wefow', 'woewo':'woeoww2', 'rieo':'2323'}
+                // var currency = 'USD'
+                // var amount = -1.0
+                // if (eventName === 'firstrecharge' || eventName === 'recharge' || eventName === 'withdrawOrderSuccess') {
+                //     var arr = JSON.parse(params)
+                //     amount = arr.amount
+                //     currency = arr.currency
+                // }
+
+                // var obj = {
+                //     'method': 'event',
+                //     'eventType': 'af',
+                //     'amount': amount,
+                //     'currency': currency,
+                //     'eventName': eventName,
+                //     'param': params,
+                // }
+                // console.log(JSON.stringify(obj))
+                // window.androidJs.onCall(JSON.stringify(obj))
+            }
+            
+        // }
+
+        </script>
+
+    </head>
+
+    <body>
+        <h1>测试</h1>
+
+        <h2 id="showmsg">测试showmsg</h2>
+
+        <input type="button" value="测试按钮1" onclick="window.androidJs.onCall('2323')"/>
+		
+		<input type="button" value="测试按钮2" onclick="window.androidJs.test()"/>
+
+        <input type="button" value="测试按钮3" onclick="window.androidJs.onGetTitle('测试按钮4444')"/>
+
+        <input type="button" value="Test" onclick="test()"/>
+    </body>
+</html>
