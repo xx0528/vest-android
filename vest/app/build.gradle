@@ -76,9 +76,38 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
 
+    //*****************************归因******************************
     implementation 'com.appsflyer:af-android-sdk:6.9.0'
+    implementation 'com.adjust.sdk:adjust-android:4.33.3'
+    implementation 'com.adjust.sdk:adjust-android-webbridge:4.33.3'
     implementation "com.android.installreferrer:installreferrer:2.2"
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+
+
+    //*****************************登录*******************************
+    implementation 'com.google.android.gms:play-services-auth:20.6.0'
+
+    //Google Firebase Login SDK
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //Google Login SDK
+    implementation ('com.google.api-client:google-api-client:2.0.0'){
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'junit', module: 'junit'
+        exclude group: 'com.google.android', module: 'android'
+    }
+    implementation 'com.google.api-client:google-api-client-android:2.0.0'
+
+    //Facebook Login SDK
+    implementation 'com.facebook.android:facebook-android-sdk:[8,9)'
+
+    //Twitter 第三方 API 封装
+    implementation 'org.twitter4j:twitter4j-core:4.0.7'
+
 
 }

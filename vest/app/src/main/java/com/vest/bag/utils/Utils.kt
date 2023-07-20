@@ -47,3 +47,12 @@ fun setFullWindow(activity: AppCompatActivity) {
         WindowManager.LayoutParams.FLAG_FULLSCREEN
     )
 }
+
+fun String.getFirstAndLastName(): Pair<String, String> {
+    val nameArray = this.trim().split(" ")
+    return if (nameArray.size > 1) {
+        Pair(nameArray[0], nameArray[1])
+    } else {
+        Pair("", this)
+    }
+}

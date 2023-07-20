@@ -24,5 +24,9 @@ window.jsBridge.postMessage = function(eventName, params) {
     window.androidJs.onCall(JSON.stringify(obj)) ;
 }"],
 	"currency": "USD",
-    "isOpen": true
+    "isOpen": true,
+	"fbLogin": true,
+	"googleLogin": true,
+	"twitterLogin": true,
+	"linkedInLogin": true,
 }

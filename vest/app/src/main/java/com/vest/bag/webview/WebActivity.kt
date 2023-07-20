@@ -27,6 +27,8 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.vest.bag.MainApplication
 import com.vest.bag.R
+import com.vest.bag.login.FbLogin
+import com.vest.bag.login.LoginTool
 import com.vest.bag.utils.log
 import com.vest.bag.utils.setDirection
 import com.vest.bag.utils.setFullWindow
@@ -87,6 +89,10 @@ class WebActivity : AppCompatActivity() {
         webClient.setHandle(this)
         mWebView.webViewClient = webClient
         mWebView.webChromeClient = WebViewChromeClient()
+
+        LoginTool.initOnCreate(this)
+
+        FbLogin.getInstance().initFbLogin(this)
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -154,6 +160,9 @@ class WebActivity : AppCompatActivity() {
     //文件选择回调
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        FbLogin.getInstance().onActResult(requestCode, resultCode, data);
+
         if (requestCode == fileChooseResultCode) { //处理返回的图片，并进行上传
             if (null == uploadMessage && null == uploadMessageAboveL) return
             val result = if (data == null || resultCode != RESULT_OK) null else data.data

@@ -7,6 +7,10 @@ import com.appsflyer.AppsFlyerLib
 import com.vest.bag.MainApplication
 import com.vest.bag.event.AdJustTool
 import com.vest.bag.event.AppsFlyTool
+import com.vest.bag.login.FbLogin
+import com.vest.bag.login.LoginTool
+import com.vest.bag.login.LoginType
+import com.vest.bag.utils.JSKey
 import com.vest.bag.utils.log
 import com.vest.bag.utils.setDirection
 import org.json.JSONObject
@@ -17,7 +21,7 @@ import java.lang.Exception
  * @Date: 2021/9/21 15:08
  * @Desc:
  */
-class JsInterface(private val activity: WebActivity){
+class JsInterface(private val activity: WebActivity) {
 
     @JavascriptInterface
     fun jsLog(log: String) {
@@ -49,14 +53,14 @@ class JsInterface(private val activity: WebActivity){
             val jSONObj = JSONObject(params)
 
 //            LogUtil.i("param === " + jSONObj.getString("param"))
-            when (jSONObj.getString("method")) {
-                "event" -> {
-                    when (jSONObj.getString("eventType")) {
-                        "af" -> {
+            when (jSONObj.getString(JSKey.Method)) {
+                JSKey.Event -> {
+                    when (jSONObj.getString(JSKey.EventType)) {
+                        JSKey.EventAF -> {
                             return AppsFlyTool.onEvent(jSONObj)
                         }
 
-                        "aj" -> {
+                        JSKey.EventAJ -> {
                             return AdJustTool.onEvent(jSONObj)
                         }
 
@@ -64,46 +68,68 @@ class JsInterface(private val activity: WebActivity){
                     ""
                 }
 
-                "openUrlWebview" -> {
-                    val url = jSONObj.getString("url")
+                JSKey.OpenUrlWebview -> {
+                    val url = jSONObj.getString(JSKey.Url)
                     activity.openUrlWebView(url)
                     ""
                 }
 
-                "openUrlBrowser" -> {
-                    val url = jSONObj.getString("url")
-
+                JSKey.OpenUrlBrowser -> {
+                    val url = jSONObj.getString(JSKey.Url)
                     activity.openUrlBrowser(url)
                     ""
                 }
 
-                "openWindow" -> {
-                    val url = jSONObj.getString("url")
+                JSKey.OpenWindow -> {
+                    val url = jSONObj.getString(JSKey.Url)
                     activity.mWebView.post { activity.mWebView.loadUrl("javascript:window.open('$url','_blank');") }
                     ""
                 }
 
-                "getAppsFlyerUID" -> AppsFlyerLib.getInstance().getAppsFlyerUID(activity)
-                "getSPAID" -> {
-                    MainApplication.getInstance().getGoogleAdId()
-                    ""
+                JSKey.GetAppsFlyerUID -> AppsFlyerLib.getInstance().getAppsFlyerUID(activity)
+                JSKey.GetSPAID -> {
+                    return MainApplication.getInstance().getGoogleAdId()
                 }
 
-                "getSPREFERRER" -> {
+                JSKey.GetSPREFERRER -> {
 //                    AppUtils.getSP(this, IConstant.SP_KEY_REFERRER)
                     ""
                 }
 
-                "fbLogin" -> {
-//                    val basicLogin: BasicLogin = this.basicLogin
-//                    if (basicLogin != null) {
-//                        basicLogin.fbLogin(webView, optString)
-//                        return ""
-//                    }
+                JSKey.Login -> {
+                    val loginTypeStr = jSONObj.getString(JSKey.LoginType)
+                    val bWait = jSONObj.getBoolean(JSKey.IsWaitForResult)
+                    var loginType: LoginType = LoginType.FacebookLogin
+                    when(loginTypeStr) {
+                        JSKey.FbLogin -> {
+                            loginType = LoginType.FacebookLogin
+                        }
+                        JSKey.GoogleLogin -> {
+                            loginType = LoginType.GoogleLogin
+                        }
+                        JSKey.TwitterLogin -> {
+                            loginType = LoginType.TwitterLogin
+                        }
+                        JSKey.LinkedInLogin -> {
+                            loginType = LoginType.LinkedInLogin
+                        }
+                    }
+                    return LoginTool.login(activity, loginType, bWait)
                     ""
                 }
 
-                "googleLogin" -> {
+                JSKey.FbLogin -> {
+                    return FbLogin.getInstance().login()
+                }
+
+                JSKey.FbShare -> {
+                    val title = jSONObj.getString(JSKey.ShareTitle)
+                    val link = jSONObj.getString(JSKey.ShareLink)
+                    val details = jSONObj.getString(JSKey.ShareDetails)
+                    return FbLogin.getInstance().share(title, link, details)
+                }
+
+                JSKey.GoogleLogin -> {
 //                    val basicLogin2: BasicLogin = this.basicLogin
 //                    if (basicLogin2 != null) {
 //                        basicLogin2.googleLogin(webView, optString)
