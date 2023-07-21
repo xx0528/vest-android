@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             AppsFlyTool.init(mjbData.getString("afKey"))
         }
 
+        log("ajToken " + mjbData.getString("ajToken"))
         if (!mjbData.getString("ajToken").isNullOrEmpty()) {
             AdJustTool.init(mjbData.getString("ajToken"))
         }
