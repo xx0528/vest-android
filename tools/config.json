@@ -22,6 +22,11 @@ window.jsBridge.postMessage = function(eventName, params) {
         'param': params,
     }
     window.androidJs.onCall(JSON.stringify(obj)) ;
+}", "javascript:paramLoginNoWait = function(result) {
+	window.androidJs.jsLog('不用等待结果' + result)
+}", "javascript:paramLoginWait = function(result) {
+	window.androidJs.jsLog('等待结果' + result)
+	return result
 }"],
 	"currency": "USD",
     "isOpen": true,

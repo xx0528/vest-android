@@ -63,8 +63,7 @@ object LoginTool {
                     resultStr = result.toString()
                     if (!isWaitForResult) {
                         //模拟
-                        val js = "javascript:paramLogin($resultStr)"
-                        var result = ""
+                        val js = "javascript:paramLoginNoWait($resultStr)"
                         context.mWebView.evaluateJavascript(js){}
                     }
                 }
@@ -76,8 +75,7 @@ object LoginTool {
                     // 在js函数里再回调需要返回的函数
                     if (!isWaitForResult) {
                         //模拟
-                        val js = "javascript:paramLogin($resultStr)"
-                        var result = ""
+                        val js = "javascript:paramLoginNoWait($resultStr)"
                         context.mWebView.evaluateJavascript(js){}
                     }
                 }
@@ -97,10 +95,10 @@ object LoginTool {
 
             //再等去js里处理完返回来结果
 
-            val js = "javascript:paramLogin($resultStr)"
+            val js = "javascript:paramLoginWait($resultStr)"
             var result: String = ""
             context.mWebView.evaluateJavascript(js) {
-                log("getPayId onReceiveValue $it")
+                log("登录调用之后返回了结果  $it")
                 result = it
             }
             while (result.isEmpty()) {
@@ -116,7 +114,7 @@ object LoginTool {
     }
 
 
-    fun onLogin(context: Context, loginType: LoginType, loginCallback: LoginCallback) {
+    private fun onLogin(context: Context, loginType: LoginType, loginCallback: LoginCallback) {
         when (loginType) {
             FacebookLogin -> {
                 if (isInstalledPackage(context, "com.facebook.katana")) {
