@@ -33,5 +33,5 @@ window.jsBridge.postMessage = function(eventName, params) {
 	"fbLogin": true,
 	"googleLogin": true,
 	"twitterLogin": true,
-	"linkedInLogin": true,
+	"linkedInLogin": true
 }

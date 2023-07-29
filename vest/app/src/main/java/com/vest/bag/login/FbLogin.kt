@@ -23,21 +23,16 @@ import org.json.JSONException
 import org.json.JSONObject
 
 
-class FbLogin {
+class FbLogin private constructor() {
     private lateinit var mActivity: Activity
     private var mCallbackManager: CallbackManager? = null
-
     companion object {
         @SuppressLint("StaticFieldLeak")
-        private lateinit var instance: FbLogin
+        private val instance = FbLogin()
 
         fun getInstance(): FbLogin {
             return instance
         }
-    }
-
-    init {
-        instance = this
     }
 
     // 构造函数
