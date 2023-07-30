@@ -4,7 +4,7 @@ import android.text.TextUtils
 import org.json.JSONObject
 
 object Const {
-    const val LINK_URL = "http://game-config-aa.oss-us-west-1.aliyuncs.com/test.json"
+    const val LINK_URL = "http://game-fiverr-slots.oss-ap-southeast-3.aliyuncs.com/config.json"
     const val AF_KEY = "YcQCMtATkHdwH4nHUq3igV"
     const val ADJUST_TOKEN = "xvssr72ru0ow"
     const val SP_KEY_REFERRER = "referrer"
