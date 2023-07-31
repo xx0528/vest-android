@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.vest.bag'
+    namespace 'kf.ab.cd'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.vest.bag"
+        applicationId "com.v3seresfwt.wgbrabr3g"
         minSdk 24
         targetSdk 34
         versionCode 1
@@ -21,6 +21,21 @@ android {
         exclude 'META-INF/DEPENDENCIES'
     }
 
+    signingConfigs {
+        debug {
+            keyAlias 'slots'
+            keyPassword 'slots0731'
+            storeFile file('D:/AndroidProj/vest-android/tools/sign-slots-0731.jks')
+            storePassword 'slots0731'
+        }
+
+        release {
+            keyAlias 'slots'
+            keyPassword 'slots0731'
+            storeFile file('D:/AndroidProj/vest-android/tools/sign-slots-0731.jks')
+            storePassword 'slots0731'
+        }
+    }
 
     buildTypes {
         release {
@@ -40,14 +55,14 @@ android {
         variantConfig {
             release {
                 //注意：这里的release是变体名称，如果没有设置productFlavors就是buildType名称，如果有设置productFlavors就是flavor+buildType，例如（freeRelease、proRelease）
-                packageBase = 'com.vest.bag' //生成java类根包名
-                packageCount = 25 //生成包数量
-                activityCountPerPackage = 4 //每个包下生成Activity类数量
+                packageBase = 'kf.ab.cd' //生成java类根包名
+                packageCount = 30 //生成包数量
+                activityCountPerPackage = 6 //每个包下生成Activity类数量
                 excludeActivityJavaFile = false
                 //是否排除生成Activity的Java文件,默认false(layout和写入AndroidManifest.xml还会执行)，主要用于处理类似神策全埋点编译过慢问题
                 otherCountPerPackage = 25  //每个包下生成其它类的数量
                 methodCountPerClass = 15  //每个类下生成方法数量
-                resPrefix = "eewwx_"  //生成的layout、drawable、string等资源名前缀
+                resPrefix = "vec_"  //生成的layout、drawable、string等资源名前缀
                 drawableCount = 150  //生成drawable资源数量
                 stringCount = 150  //生成string数量
             }
@@ -70,7 +85,7 @@ android {
         //用于增量混淆的 mapping 文件
         mappingFile = file("xml-class-mapping.txt")
         //更改manifest文件的package属性，即包名
-        packageChange = ["com.ljx.example": "ab.cd"]
+        packageChange = ["com.vest.bag": "kf.ab.cd"]
         //移动目录
         moveDir = ["com.vest.bag": "sw.ef.gh"]
     }
@@ -100,7 +115,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
 
     //Google Login SDK
-    implementation ('com.google.api-client:google-api-client:2.0.0'){
+    implementation('com.google.api-client:google-api-client:2.0.0') {
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'org.apache.httpcomponents', module: 'httpclient'
         exclude group: 'junit', module: 'junit'
