@@ -1,8 +1,8 @@
 {
-    "url": "https://jebet.vip/?id=87236413",
-    "afKey": "YcQCMtATkHdwH4nHUq3igV",
+    "url": "http://147.139.190.111/",
+    "afKey": "",
     "ajToken": "",
-    "orientation": "portrait",
+    "orientation": "sensorLandscape",
     "jsInterface": ["androidjs","androidJs","jsBridge"],
     "jsCode": ["javascript:
 window.jsBridge.postMessage = function(eventName, params) {
@@ -30,8 +30,8 @@ window.jsBridge.postMessage = function(eventName, params) {
 }"],
 	"currency": "USD",
     "isOpen": true,
-	"fbLogin": true,
-	"googleLogin": true,
-	"twitterLogin": true,
-	"linkedInLogin": true
+	"fbLogin": false,
+	"googleLogin": false,
+	"twitterLogin": false,
+	"linkedInLogin": false
 }
